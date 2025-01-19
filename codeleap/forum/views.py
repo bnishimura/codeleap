@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
 from rest_framework import viewsets
-from .models import Item
-from .serializers import ItemSerializer
+from codeleap.forum.models import Item
+from codeleap.forum.serializers import ItemSerializer
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -11,7 +11,8 @@ from rest_framework.decorators import api_view
 def root(request):
     # get items
     if request.method == "GET":
-        app = Item.objects.all()
+        # app = Item.objects.all()
+        app = Item.objects.order_by('created_datetime')
         serializer = ItemSerializer(app, many=True)
         return Response(serializer.data)
 

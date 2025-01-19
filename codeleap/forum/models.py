@@ -8,3 +8,7 @@ class Item(models.Model):
     # content = models.TextField()  # no text field?
     content = models.CharField(max_length=32767)  # 2^14
 
+    # app_label="forum"
+
+    def __str__(self):
+        return self.title

@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from .models import Item
+from codeleap.forum.models import Item
 
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,7 +9,7 @@ class ItemSerializer(serializers.ModelSerializer):
         # fields = '__all__'
 
     title = serializers.CharField(required=True)
-    content = serializers.TextField(required=True)
+    content = serializers.CharField(required=True)
     username = serializers.CharField(required=True)
 
     id = serializers.IntegerField(read_only=True)
